@@ -1,0 +1,288 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "projectID",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "contributor",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "currentBalance",
+						"type": "uint256"
+					}
+				],
+				"name": "fundReceived",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "projectID",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "currentBalance",
+						"type": "uint256"
+					}
+				],
+				"name": "ownerPaid",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "projectID",
+						"type": "uint256"
+					}
+				],
+				"name": "contribute",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_targetAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_deadlineInDays",
+						"type": "uint256"
+					}
+				],
+				"name": "createProject",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "projectID",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "projectID",
+						"type": "uint256"
+					}
+				],
+				"name": "getProject",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "targetAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadlineInDays",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startingTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endingTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum Project.fStatus",
+						"name": "fundingStatus",
+						"type": "uint8"
+					},
+					{
+						"internalType": "enum Project.pStatus",
+						"name": "projectStatus",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentBalance",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "projectID",
+						"type": "uint256"
+					}
+				],
+				"name": "payout",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "projectID",
+						"type": "uint256"
+					}
+				],
+				"name": "refund",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Crowdfunding.sol": "Crowdfunding"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Crowdfunding.sol": {
+			"keccak256": "0xc0f4f28d8c1e945b5393074cee58ff050836d032ac890e1769501a12acdfb55c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://69d3b8ad8031cbb466e680d4ca93412d19d250aa87a6e6a2bf3370b25c6f2284",
+				"dweb:/ipfs/QmTgtVCJWEFWdPVEVrLUVNwguWojcYANbZVED1cRdAGbmK"
+			]
+		},
+		"contracts/Project.sol": {
+			"keccak256": "0xd0a96029585116c8438f2e08e43754ddf7d85e4aed96f4e48bded731dc3682c7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7cc0d9083618c74ec6239834b5754d4bbe58eda50e3539d22729fdbeb2019ba2",
+				"dweb:/ipfs/QmZtGBTJeynfyRSrZiXkgJCjZu6pKY6AHhMSiZuWoFDMrz"
+			]
+		},
+		"contracts/library/SafeMath.sol": {
+			"keccak256": "0x130747508e24ce903a716565bdda3314ae854f915d32ea16a04f66713c94ecbf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://982adf781a6057ab96f40e2403b7c102dc3d14304225df3245218703e85d4848",
+				"dweb:/ipfs/QmcYFvY9qqZH3B2p5jQnvLwmdM8tus8T8dUFVPFUriJp51"
+			]
+		},
+		"contracts/library/SafeMath16.sol": {
+			"keccak256": "0xe93afe652f6bd5e6693b923ce9e8e7ab485bd759de4e5347a6032a4a67ed1423",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b6f1bff00789766439c96a2c012e53f605a2f2000d261661d12ecfe0323e8c7a",
+				"dweb:/ipfs/Qmc1JhxM7a5yjFUtpu3AunSYkivGDzJ5MPfbAKAKgVqCXT"
+			]
+		},
+		"contracts/library/SafeMath8.sol": {
+			"keccak256": "0x7108bbf2051049a0dd045437637854c2d7dbf2bf995e86623a5ffba68ef4a4db",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://55a24f98f71a06d9b6eda07de2651d8c0e23b287ddfa1380e805c4b230aa60d7",
+				"dweb:/ipfs/QmdF3c6nkxwGetvgphB2im1Qe7Bj4WcqoEXefx6PmYmbyN"
+			]
+		}
+	},
+	"version": 1
+}
