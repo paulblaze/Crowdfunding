@@ -1,0 +1,97 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getCurrentTime",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					}
+				],
+				"name": "setCurrentTime",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"getCurrentTime()": {
+					"returns": {
+						"_0": "uint256 for the current Testable timestamp."
+					}
+				},
+				"setCurrentTime(uint256)": {
+					"details": "Will revert if not running in test mode.",
+					"params": {
+						"time": "timestamp to set `currentTime` to."
+					}
+				}
+			},
+			"title": "Universal store of current contract time for testing environments.",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getCurrentTime()": {
+					"notice": "Gets the current time. Will return the last time set in `setCurrentTime` if running in test mode. Otherwise, it will return the block timestamp."
+				},
+				"setCurrentTime(uint256)": {
+					"notice": "Sets the current time."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/library/Timer.sol": "Timer"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/library/Timer.sol": {
+			"keccak256": "0x3b6118183390d983107f80e7020bfb3df90cc3f793d573c9a9d982f3e286f644",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c980cef8566fdba10776df6cd0a7de77dbf3568b0996d49d71dcfe044005472e",
+				"dweb:/ipfs/QmbbzLzvGbw7kmk38mLWHv6ojdAdD1BXva3Cgos4wgnw5E"
+			]
+		}
+	},
+	"version": 1
+}

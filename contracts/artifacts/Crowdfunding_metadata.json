@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -74,6 +74,25 @@
 						"type": "uint256"
 					}
 				],
+				"name": "bulkRefund",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "projectID",
+						"type": "uint256"
+					}
+				],
 				"name": "contribute",
 				"outputs": [],
 				"stateMutability": "payable",
@@ -116,6 +135,44 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "contributor",
+						"type": "address"
+					}
+				],
+				"name": "getContributedProjects",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "projectOwner",
+						"type": "address"
+					}
+				],
+				"name": "getOwnerProjects",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "projectID",
 						"type": "uint256"
@@ -123,6 +180,11 @@
 				],
 				"name": "getProject",
 				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_projectID",
+						"type": "uint256"
+					},
 					{
 						"internalType": "string",
 						"name": "title",
@@ -154,11 +216,6 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "enum Project.fStatus",
-						"name": "fundingStatus",
-						"type": "uint8"
-					},
-					{
 						"internalType": "enum Project.pStatus",
 						"name": "projectStatus",
 						"type": "uint8"
@@ -183,9 +240,38 @@
 						"internalType": "uint256",
 						"name": "projectID",
 						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "contributor",
+						"type": "address"
 					}
 				],
-				"name": "payout",
+				"name": "getProjectContribution",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "projectID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "contributor_",
+						"type": "address"
+					}
+				],
+				"name": "getRefund",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -204,7 +290,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "refund",
+				"name": "payout",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -213,6 +299,19 @@
 					}
 				],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalProjects",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -231,7 +330,7 @@
 		"compilationTarget": {
 			"contracts/Crowdfunding.sol": "Crowdfunding"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -244,19 +343,19 @@
 	},
 	"sources": {
 		"contracts/Crowdfunding.sol": {
-			"keccak256": "0xc0f4f28d8c1e945b5393074cee58ff050836d032ac890e1769501a12acdfb55c",
+			"keccak256": "0x8ba9ced1269eabe79a94afecb0654de041c7a6aea15db03c2dd343cd6a11d990",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://69d3b8ad8031cbb466e680d4ca93412d19d250aa87a6e6a2bf3370b25c6f2284",
-				"dweb:/ipfs/QmTgtVCJWEFWdPVEVrLUVNwguWojcYANbZVED1cRdAGbmK"
+				"bzz-raw://d56b0c665cebb595039a8d3addb1e65c48752b4862de49204143c21e6f7091ff",
+				"dweb:/ipfs/QmPaWkVXJzT4FM3fi1fZuiifirrpZZcuU5wdTZz7kzAhpU"
 			]
 		},
 		"contracts/Project.sol": {
-			"keccak256": "0xd0a96029585116c8438f2e08e43754ddf7d85e4aed96f4e48bded731dc3682c7",
+			"keccak256": "0x18b692fea39fa2637cb4bbae290188e33839c0cff7534941ea1289a399452f7c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7cc0d9083618c74ec6239834b5754d4bbe58eda50e3539d22729fdbeb2019ba2",
-				"dweb:/ipfs/QmZtGBTJeynfyRSrZiXkgJCjZu6pKY6AHhMSiZuWoFDMrz"
+				"bzz-raw://9c30a8676cc8bee0dd5555ec43d313f924ae01f432517ad5ce5fe9bd957a55c4",
+				"dweb:/ipfs/QmZ4nKbbftQEjo9ZcwMJAXbFacsqJYbYDoF4gskBMXh8P9"
 			]
 		},
 		"contracts/library/SafeMath.sol": {
@@ -281,6 +380,14 @@
 			"urls": [
 				"bzz-raw://55a24f98f71a06d9b6eda07de2651d8c0e23b287ddfa1380e805c4b230aa60d7",
 				"dweb:/ipfs/QmdF3c6nkxwGetvgphB2im1Qe7Bj4WcqoEXefx6PmYmbyN"
+			]
+		},
+		"contracts/library/Timer.sol": {
+			"keccak256": "0x3b6118183390d983107f80e7020bfb3df90cc3f793d573c9a9d982f3e286f644",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c980cef8566fdba10776df6cd0a7de77dbf3568b0996d49d71dcfe044005472e",
+				"dweb:/ipfs/QmbbzLzvGbw7kmk38mLWHv6ojdAdD1BXva3Cgos4wgnw5E"
 			]
 		}
 	},

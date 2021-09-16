@@ -9,17 +9,10 @@ contract Project {
 
     using SafeMath for uint256;
     
-    enum fStatus {
-        Inprogress,
-        Completed,        
-        Paid,
-        Expired,
-        Refunded
-    }
-
     enum pStatus {
         Open,
-        Closed
+        Completed,
+        Expired        
     }
     
     //Project Information
@@ -28,11 +21,11 @@ contract Project {
         string title;
         string description;
         uint256 targetAmount;
+        uint256 receivedAmount;
         uint256 deadlineInDays;
         uint256 startingTimestamp;
         uint256 endingTimestamp;
-        uint256 completedTimestamp;        
-        fStatus fundingStatus;
+        uint256 completedTimestamp;       
         pStatus projectStatus;
         address owner;
         uint256 currentBalance;        
@@ -41,6 +34,7 @@ contract Project {
 
     //Projects
     mapping (uint256 => projectInfo) internal projects;
+    mapping (address => uint256[]) internal projectOwnerMap;
 
     //Create Project
     function createProject(
@@ -55,46 +49,61 @@ contract Project {
         uint256 _projectID = numOfProjects;
 
         projectInfo storage project = projects[_projectID];
+        project.projectID = _projectID;
         project.title = _title;
         project.description = _description;
         project.targetAmount = _targetAmount;
         project.deadlineInDays = _deadlineInDays;
         project.startingTimestamp = _startingTimestamp;
         project.endingTimestamp = _startingTimestamp + _deadlineInDays * 1 days;
-        project.fundingStatus = fStatus.Inprogress;
         project.projectStatus = pStatus.Open;
         project.owner = msg.sender;
+
+        projectOwnerMap[msg.sender].push(_projectID);
 
         return _projectID;
     }
 
     //Get Project
     function getProject(uint256 projectID) public view returns (
+        uint256 _projectID,
         string memory title,
         string memory description,
         uint256 targetAmount,
+        uint256 receivedAmount,
         uint256 deadlineInDays,
         uint256 startingTimestamp,
-        uint256 endingTimestamp,
-        fStatus fundingStatus,
+        uint256 endingTimestamp,        
         pStatus projectStatus,
         address owner,
         uint256 currentBalance        
     ) {
 
         projectInfo storage project = projects[projectID];
-
+        
+        require(project.projectID != 0,"Invalid Project ID");
+ 
         return (
+            project.projectID,
             project.title,
             project.description,
             project.targetAmount,
+            project.receivedAmount,
             project.deadlineInDays,
             project.startingTimestamp,
             project.endingTimestamp,
-            project.fundingStatus,
             project.projectStatus,
             project.owner,
             project.currentBalance            
         );
+    }
+    
+    function totalProjects() public view returns(uint) {
+        return numOfProjects;
+    }
+
+    function getOwnerProjects(address projectOwner) public view returns(uint256[] memory) {
+
+        return projectOwnerMap[projectOwner];
     }
 }

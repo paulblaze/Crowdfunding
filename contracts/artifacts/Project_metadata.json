@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -42,6 +42,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "projectOwner",
+						"type": "address"
+					}
+				],
+				"name": "getOwnerProjects",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "projectID",
 						"type": "uint256"
@@ -49,6 +68,11 @@
 				],
 				"name": "getProject",
 				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_projectID",
+						"type": "uint256"
+					},
 					{
 						"internalType": "string",
 						"name": "title",
@@ -80,11 +104,6 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "enum Project.fStatus",
-						"name": "fundingStatus",
-						"type": "uint8"
-					},
-					{
 						"internalType": "enum Project.pStatus",
 						"name": "projectStatus",
 						"type": "uint8"
@@ -97,6 +116,19 @@
 					{
 						"internalType": "uint256",
 						"name": "currentBalance",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalProjects",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
 						"type": "uint256"
 					}
 				],
@@ -119,7 +151,7 @@
 		"compilationTarget": {
 			"contracts/Project.sol": "Project"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -132,11 +164,11 @@
 	},
 	"sources": {
 		"contracts/Project.sol": {
-			"keccak256": "0xd0a96029585116c8438f2e08e43754ddf7d85e4aed96f4e48bded731dc3682c7",
+			"keccak256": "0x18b692fea39fa2637cb4bbae290188e33839c0cff7534941ea1289a399452f7c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7cc0d9083618c74ec6239834b5754d4bbe58eda50e3539d22729fdbeb2019ba2",
-				"dweb:/ipfs/QmZtGBTJeynfyRSrZiXkgJCjZu6pKY6AHhMSiZuWoFDMrz"
+				"bzz-raw://9c30a8676cc8bee0dd5555ec43d313f924ae01f432517ad5ce5fe9bd957a55c4",
+				"dweb:/ipfs/QmZ4nKbbftQEjo9ZcwMJAXbFacsqJYbYDoF4gskBMXh8P9"
 			]
 		},
 		"contracts/library/SafeMath.sol": {
